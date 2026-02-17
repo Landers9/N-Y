@@ -190,14 +190,11 @@ export default function Navbar() {
               {navLinks.map((link) => (
                 <button
                   key={link.key}
-                  onMouseEnter={() => {
-                    if (link.key === "services") setMegaMenuOpen(true);
-                  }}
                   onClick={() => {
                     if (link.key === "services") setMegaMenuOpen(!megaMenuOpen);
                   }}
                   className={cn(
-                    "flex items-center gap-1.5 px-4 py-2 rounded-sm text-sm font-medium transition-all duration-200",
+                    "flex items-center gap-1.5 px-4 py-2 rounded-sm text-[15px] font-medium transition-all duration-200",
                     link.key === "services" && megaMenuOpen
                       ? "text-white"
                       : "text-white/70 hover:text-white",
@@ -250,12 +247,12 @@ export default function Navbar() {
               onMouseLeave={() => setMegaMenuOpen(false)}
               className="absolute left-0 w-full bg-white shadow-2xl shadow-black/10"
             >
-              <div className="max-w-7xl mx-auto px-6 py-10">
+              <div className="max-w-7xl mx-auto px-6 py-6">
                 {/* 3 columns */}
                 <div className="grid grid-cols-3 gap-16">
                   {Object.values(megaMenuData).map((section) => (
                     <div key={section.title}>
-                      <h3 className="text-[11px] font-bold tracking-[0.15em] text-ns-dark/40 uppercase mb-6">
+                      <h3 className="text-xs font-bold tracking-[0.15em] text-ns-dark/40 uppercase mb-6">
                         {section.title}
                       </h3>
                       <div className="space-y-1">
@@ -269,10 +266,10 @@ export default function Navbar() {
                               <item.icon className="w-5 h-5 text-ns-dark/60 group-hover:text-ns-purple transition-colors duration-150" />
                             </div>
                             <div className="pt-0.5">
-                              <p className="font-semibold text-ns-dark text-[14px] leading-tight group-hover:text-ns-purple transition-colors duration-150">
+                              <p className="font-semibold text-ns-dark text-[15px] leading-tight group-hover:text-ns-purple transition-colors duration-150">
                                 {item.label}
                               </p>
-                              <p className="text-ns-dark/45 text-[13px] mt-1">
+                              <p className="text-ns-dark/45 text-sm mt-1">
                                 {item.desc}
                               </p>
                             </div>
@@ -287,13 +284,13 @@ export default function Navbar() {
                 <div className="mt-10 pt-6 border-t border-ns-dark/8 flex items-center justify-between">
                   <a
                     href="#accompagnement"
-                    className="text-sm text-ns-purple font-medium hover:text-ns-red transition-colors"
+                    className="text-[15px] text-ns-purple font-medium hover:text-ns-red transition-colors"
                   >
                     Besoin d&apos;accompagnement ?
                   </a>
                   <a
                     href="#diagnostic"
-                    className="group inline-flex items-center gap-2 border border-ns-dark/15 hover:border-ns-dark/30 text-ns-dark px-5 py-2.5 rounded-sm text-sm font-medium transition-all duration-200 hover:shadow-sm"
+                    className="group inline-flex items-center gap-2 bg-ns-red hover:bg-red-700 text-white px-6 py-3 rounded-sm text-[15px] font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-ns-red/30"
                   >
                     Demander un diagnostic
                     <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />

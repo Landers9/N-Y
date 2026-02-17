@@ -1,6 +1,7 @@
+import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import LogoSlider from "@/components/LogoSlider";
-import Navbar from "@/components/Navbar";
+import ServicesSection from "@/components/ServicesSection";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <LogoSlider />
+      <ServicesSection />
     </main>
   );
 }

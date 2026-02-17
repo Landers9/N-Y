@@ -23,7 +23,7 @@ export default function HeroSection() {
   return (
     <section
       className="relative overflow-hidden bg-ns-dark"
-      style={{ height: NAV_HEIGHT, minHeight: '480px' }}
+      style={{ height: NAV_HEIGHT, minHeight: '420px' }}
     >
       {/* Background image */}
       <div
@@ -45,7 +45,7 @@ export default function HeroSection() {
               initial="hidden"
               animate="visible"
               variants={fadeUp}
-              className="font-[family-name:var(--font-heading)] text-[20px] sm:text-[32px] lg:text-[40px] xl:text-[46px] font-extrabold leading-[1.08] tracking-tight text-white"
+              className="font-[family-name:var(--font-heading)] text-[24px] sm:text-[32px] lg:text-[40px] xl:text-[46px] font-extrabold leading-[1.08] tracking-tight text-white"
             >
               Construire la{' '}
               <span className="text-ns-red">confiance</span>

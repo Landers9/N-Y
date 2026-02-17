@@ -46,7 +46,7 @@ function ServiceCard({
 
   return (
     <div
-      className="w-full max-w-[420px] ml-auto cursor-pointer"
+      className="w-full max-w-[420px] mx-auto lg:mx-0 lg:ml-auto cursor-pointer"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -72,17 +72,17 @@ function ServiceCard({
           }}
         />
 
-        <div className="p-7 sm:p-8">
+        <div className="p-6 sm:p-7 lg:p-8">
           {/* Icon */}
           <div
             className={cn(
-              "w-14 h-14 rounded-sm flex items-center justify-center mb-5 transition-all duration-100",
+              "w-12 h-12 sm:w-14 sm:h-14 rounded-sm flex items-center justify-center mb-4 sm:mb-5 transition-all duration-100",
               hovered ? "bg-white" : "bg-ns-dark/8",
             )}
           >
             <Icon
               className={cn(
-                "w-7 h-7 transition-colors duration-100",
+                "w-6 h-6 sm:w-7 sm:h-7 transition-colors duration-100",
                 hovered ? "text-ns-red" : "text-ns-dark/70",
               )}
             />
@@ -91,7 +91,7 @@ function ServiceCard({
           {/* Title */}
           <h3
             className={cn(
-              "font-[family-name:var(--font-heading)] font-bold text-lg sm:text-xl transition-colors duration-100",
+              "font-[family-name:var(--font-heading)] font-bold text-base sm:text-lg lg:text-xl transition-colors duration-100",
               hovered ? "text-white" : "text-ns-dark",
             )}
           >
@@ -184,104 +184,123 @@ export default function ServicesSection() {
           "relative bg-white overflow-hidden",
           isLg && "sticky top-0",
         )}
-        style={{ height: isLg ? "100vh" : "90vh", minHeight: "550px" }}
+        style={isLg ? { height: "100vh", minHeight: "550px" } : undefined}
       >
-      {/* Dark container — 3/4 width, full rounded right */}
-      <div
-        className="absolute top-0 left-0 h-full w-3/4 bg-ns-dark"
-        style={{
-          borderRadius: "0 9999px 9999px 0",
-          clipPath: "inset(0 0 0 0 round 0 9999px 9999px 0)",
-        }}
-      >
+        {/* Dark container — full width on mobile, 3/4 rounded on desktop */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-          style={{ backgroundImage: "url('/images/bgservice.png')" }}
-        />
-      </div>
-
-      {/* Content — generous symmetric padding */}
-      <div className="relative z-10 h-full px-8 sm:px-14 lg:px-24 xl:px-32">
-        <div className="flex items-center h-full max-w-[1400px] mx-auto">
-          {/* ── Left text ── */}
+          className="absolute top-0 left-0 h-full w-full lg:w-3/4 bg-ns-dark"
+          style={
+            isLg
+              ? {
+                  borderRadius: "0 9999px 9999px 0",
+                  clipPath: "inset(0 0 0 0 round 0 9999px 9999px 0)",
+                }
+              : undefined
+          }
+        >
           <div
-            className="w-full lg:w-1/2"
-            style={{ minHeight: `${VISIBLE_HEIGHT}px` }}
-          >
-            <h2 className="font-[family-name:var(--font-heading)] text-[24px] sm:text-[32px] lg:text-[40px] font-extrabold leading-[1.1] text-white">
-              Réduire le
-              <br />
-              risque cyber
-              <br /> à zéro.
-            </h2>
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+            style={{ backgroundImage: "url('/images/bgservice.png')" }}
+          />
+        </div>
 
-            <p className="mt-6 text-white/80 text-sm sm:text-base leading-relaxed max-w-[420px]">
-              Nous accompagnons les organisations de toutes tailles à renforcer
-              leur posture de sécurité et leur résilience à long terme.
-            </p>
-            <p className="mt-3 text-white/80 text-sm sm:text-base leading-relaxed max-w-[420px]">
-              En combinant gouvernance, conformité et technologies de confiance,
-              nous vous aidons à éliminer les risques cyber.
-            </p>
-            <a
-              href="#services"
-              className="group inline-flex items-center gap-2.5 bg-ns-red hover:bg-red-700 text-white px-7 py-3 rounded-sm text-sm font-semibold transition-all duration-300 hover:shadow-xl hover:shadow-ns-red/25 mt-10 w-fit"
-            >
-              Découvrir nos services
-              <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-            </a>
-
-            {/* Progress dots */}
-            <div className="mt-8 flex items-center gap-2">
-              {services.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => scrollToIndex(i)}
-                  className={cn(
-                    "transition-all duration-300 rounded-full",
-                    i === activeIndex
-                      ? "w-8 h-2 bg-ns-red"
-                      : i === activeIndex + 1
-                        ? "w-4 h-2 bg-white/30"
-                        : "w-2 h-2 bg-white/20 hover:bg-white/40",
-                  )}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* ── Right: Vertical carousel — 2 cards visible ── */}
-          <div className="hidden lg:flex w-1/2 h-full items-center overflow-hidden">
+        {/* Content */}
+        <div className="relative z-10 lg:h-full px-5 sm:px-8 lg:px-24 xl:px-32 py-12 sm:py-16 lg:py-0">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:h-full max-w-[1400px] mx-auto">
+            {/* ── Left text ── */}
             <div
-              className="relative w-full overflow-hidden"
-              style={{ height: `${VISIBLE_HEIGHT}px` }}
+              className="w-full lg:w-1/2"
+              style={isLg ? { minHeight: `${VISIBLE_HEIGHT}px` } : undefined}
             >
-              <div
-                className="absolute w-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                style={{
-                  transform: `translateY(-${activeIndex * (CARD_HEIGHT + GAP)}px)`,
-                }}
+              <h2 className="font-[family-name:var(--font-heading)] text-[24px] sm:text-[32px] lg:text-[40px] font-extrabold leading-[1.1] text-white">
+                Réduire le
+                <br />
+                risque cyber
+                <br /> à zéro.
+              </h2>
+
+              <p className="mt-5 sm:mt-6 text-white/80 text-sm sm:text-base leading-relaxed max-w-[420px]">
+                Nous accompagnons les organisations de toutes tailles à
+                renforcer leur posture de sécurité et leur résilience à long
+                terme.
+              </p>
+              <p className="mt-3 text-white/80 text-sm sm:text-base leading-relaxed max-w-[420px]">
+                En combinant gouvernance, conformité et technologies de
+                confiance, nous vous aidons à éliminer les risques cyber.
+              </p>
+              <a
+                href="#services"
+                className="group inline-flex items-center gap-2.5 bg-ns-red hover:bg-red-700 text-white px-7 py-3 rounded-sm text-sm font-semibold transition-all duration-300 hover:shadow-xl hover:shadow-ns-red/25 mt-8 sm:mt-10 w-fit"
               >
+                Découvrir nos services
+                <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+              </a>
+
+              {/* Progress dots — desktop only */}
+              <div className="mt-8 hidden lg:flex items-center gap-2">
+                {services.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => scrollToIndex(i)}
+                    className={cn(
+                      "transition-all duration-300 rounded-full",
+                      i === activeIndex
+                        ? "w-8 h-2 bg-ns-red"
+                        : i === activeIndex + 1
+                          ? "w-4 h-2 bg-white/30"
+                          : "w-2 h-2 bg-white/20 hover:bg-white/40",
+                    )}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* ── Right: Vertical carousel — desktop only ── */}
+            <div className="hidden lg:flex w-1/2 h-full items-center overflow-hidden">
+              <div
+                className="relative w-full overflow-hidden"
+                style={{ height: `${VISIBLE_HEIGHT}px` }}
+              >
+                <div
+                  className="absolute w-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  style={{
+                    transform: `translateY(-${activeIndex * (CARD_HEIGHT + GAP)}px)`,
+                  }}
+                >
+                  {services.map((service) => (
+                    <div
+                      key={service.title}
+                      style={{
+                        height: `${CARD_HEIGHT}px`,
+                        marginBottom: `${GAP}px`,
+                      }}
+                    >
+                      <ServiceCard
+                        icon={service.icon}
+                        title={service.title}
+                        desc={service.desc}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* ── Mobile/Tablet cards grid ── */}
+            <div className="lg:hidden w-full mt-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                 {services.map((service) => (
-                  <div
+                  <ServiceCard
                     key={service.title}
-                    style={{
-                      height: `${CARD_HEIGHT}px`,
-                      marginBottom: `${GAP}px`,
-                    }}
-                  >
-                    <ServiceCard
-                      icon={service.icon}
-                      title={service.title}
-                      desc={service.desc}
-                    />
-                  </div>
+                    icon={service.icon}
+                    title={service.title}
+                    desc={service.desc}
+                  />
                 ))}
               </div>
             </div>
           </div>
         </div>
-      </div>
       </section>
     </div>
   );

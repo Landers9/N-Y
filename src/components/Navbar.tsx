@@ -178,7 +178,7 @@ export default function Navbar() {
                 alt="Nyquist-Shannon"
                 width={480}
                 height={120}
-                className="w-60 h-auto"
+                className="w-40 sm:w-60 h-auto"
                 quality={100}
                 unoptimized
                 priority

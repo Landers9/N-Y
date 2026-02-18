@@ -205,7 +205,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 lg:h-full px-5 sm:px-8 lg:px-24 xl:px-32 py-12 sm:py-16 lg:py-0">
+        <div className="relative z-10 lg:h-full px-4 sm:px-8 lg:px-24 xl:px-32 py-12 sm:py-16 lg:py-0">
           <div className="flex flex-col lg:flex-row lg:items-center lg:h-full max-w-[1400px] mx-auto">
             {/* ── Left text ── */}
             <div

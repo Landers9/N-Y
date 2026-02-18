@@ -60,7 +60,7 @@ export default function HeroSection() {
               initial="hidden"
               animate="visible"
               variants={fadeUp}
-              className="mt-6 lg:mt-8 text-white/60 text-base sm:text-lg leading-relaxed max-w-[480px]"
+              className="mt-6 lg:mt-8 text-white/80 text-base sm:text-lg leading-relaxed max-w-[480px]"
             >
               Gouvernance, Risques et Conformité (GRC), identité
               numérique, signature électronique et souveraineté
